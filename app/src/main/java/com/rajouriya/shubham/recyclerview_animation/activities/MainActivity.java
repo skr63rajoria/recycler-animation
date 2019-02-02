@@ -29,17 +29,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        /*initialise all UI elements*/
         animationRecyclerView = (RecyclerView)findViewById(R.id.animation_recycler_view);
         normalAnimBtn = (Button)findViewById(R.id.normal_anim_btn);
         reverseAnimBtn = (Button)findViewById(R.id.reverse_anim_btn);
         randomAnimBtn = (Button)findViewById(R.id.random_anim_btn);
         mContext = this;
 
+        /*attach click listnet to buttn wigdet*/
         normalAnimBtn.setOnClickListener(this);
         reverseAnimBtn.setOnClickListener(this);
         randomAnimBtn.setOnClickListener(this);
 
         countries = Constants.getCountryList();
+
+        /*make deault animation over recycler view*/
         makeRecyclerAniamtion(R.anim.layout_animation_fall_normal);
         countryAdapter = new CountryAdapter(mContext,countries);
         animationRecyclerView.setAdapter(countryAdapter);
@@ -48,6 +53,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void makeRecyclerAniamtion(int resId) {
+
+        /*resId will be passed at run time to provide specific animation over recycler view*/
         LayoutAnimationController animation = AnimationUtils.loadLayoutAnimation(mContext, resId);
         animationRecyclerView.setLayoutAnimation(animation);
         animationRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));

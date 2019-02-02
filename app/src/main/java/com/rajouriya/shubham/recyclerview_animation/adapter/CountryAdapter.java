@@ -29,6 +29,8 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.MyViewHo
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+
+        /*attach layout cell to inflate the recycler view*/
         View itemView = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.recycler_view_cell, viewGroup, false);
         return new CountryAdapter.MyViewHolder(itemView);
